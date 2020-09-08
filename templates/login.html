@@ -1,0 +1,41 @@
+{%  extends 'base.html' %}
+
+
+
+
+
+{% block title %}
+       login
+     {% endblock %}
+
+ {% block content %}
+
+<div class = "mt-5">
+
+
+ 
+<form  method = "POST" action = "" class = "form-group mr-auto ml-auto col-md-6">
+{% csrf_token %}
+<h3 class = "text-center">login your account</h3><br>
+
+
+{% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+{% endfor %}
+
+<input type = "name" name = "name" class = "form-control" id = "name" autocomplete = "False"  placeholder = "Enter your name"><br>
+<input type = "password" name = "password" class = "form-control" id = "password" placeholder = "Enter your password"><br>
+<input type = "submit" class = "btn btn-info form-control" value = "submit"><br>
+<small>Don't have an account? <a href = "{% url 'register' %}">Register</a></small>
+
+
+</form>
+</div>
+
+
+{% endblock %}

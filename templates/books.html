@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<a href = "{% url 'upload_book' %}" class = "btn btn-primary btn-sm">Upload Books</a>
+<table class = "table">
+<thead>
+<tr>
+<th>Title</th>
+<th>Author</th>
+<th>Name</th>
+</tr>
+<thead>
+{% for book in books %}
+<tbody>
+<tr>
+<td>{{book.title}}</td>
+<td>{{book.author}}</td>
+<td><a href = "{{ book.pdf.url }}" class = "btn btn-primary btn-sm" target = "_blank">Download Book<a></td>
+<td>
+<form method = 'POST' action ="{% url 'delete_book' book.pk %}" >
+{% csrf_token %}
+<button type = 'submit' class = "btn btn-danger btn-sm">Delete</button>
+</form>
+</td>
+</tr>
+
+</tbody>
+{% endfor%}
+
+</table>
+
+{% endblock %}
