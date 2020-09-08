@@ -1,0 +1,1 @@
+This django project is designed for users so that they can upload and download their required books. A effective authentication system has been provided as well. The users can contact through contact page if required.
